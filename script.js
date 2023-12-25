@@ -62,8 +62,12 @@ const usersId = [
     const userIndex = usersId.findIndex((userInfo) => userInfo.name === user)
     
     if (userIndex !== -1) {
-      return 'here is your introduction ' + '\nMy name is ' + usersId[userIndex].name + ' I am from ' + 
-      usersId[userIndex].state + ' state but I live in ' + usersId[userIndex].residence + ' state I am writing ' + usersId[userIndex].stack + ' and I like ' + usersId[userIndex].hobby 
+      return 'here is your introduction ' + '\nMy name is ' +
+      usersId[userIndex].name + ' I am from ' + 
+      
+      usersId[userIndex].state + ' state but I live in ' +
+      usersId[userIndex].residence + ' state I am writing ' +
+      usersId[userIndex].stack + ' and I like ' + usersId[userIndex].hobby 
     }else {
       return 'We cannot provide your info as a non member'
     }
