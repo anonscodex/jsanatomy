@@ -3,7 +3,7 @@ root = (a, b, c)=> {
 }
 
 x1 = (a, b, c)=> {
-  return((-b + root(a, b, c)) / (2 * a)
+  return((-b + root(a, b, c)) / (2 * a))
 }
 
 
