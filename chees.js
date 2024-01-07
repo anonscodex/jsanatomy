@@ -16,6 +16,7 @@ function generateChessboard(size) {
 
   return board;
 }
+console.log('chessboard')
 
 const size = 8;
 console.log(generateChessboard(size));
