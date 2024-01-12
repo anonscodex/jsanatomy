@@ -12,7 +12,9 @@ function accountNumbers() {
   return Math.floor(Math.random() * 100000);
 }
 
-
+function getPin () {
+  
+}
 
 // Create account function
 function createAccount() {
