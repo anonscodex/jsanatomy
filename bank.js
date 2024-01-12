@@ -2,6 +2,7 @@ let account = [
   {
     accountName: null,
     accountNumber: null,
+    pin: null,
     Funds: null
   }
 ];
@@ -10,6 +11,8 @@ let account = [
 function accountNumbers() {
   return Math.floor(Math.random() * 100000);
 }
+
+
 
 // Create account function
 function createAccount() {
@@ -24,8 +27,41 @@ function createAccount() {
   console.log(account);
 }
 
+
+
+let user = prompt ("What's your name ")
+
+
+
+ let userId = 0;
+   
+  function validateUser(userId)  {
+    
+    userExists = false;
+  
+    for (userId; userId < account.length; userId++) {
+    
+      if (user === account[userId].accountName) {
+        userExists = true;
+      }
+    
+    }
+    
+    return userExists ? 'welcome ' + user : 'Contact Admin';
+  }
+
+function addFunds() {
+  
+}
+
 createAccount()
 
+    
+    function introduceUser() {
+      console.log(validateUser(userId))
+    }
+    
+    introduceUser()
 //function depositFunds() {
  // prompt('Enter account name')
 //}
