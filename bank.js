@@ -1,6 +1,4 @@
-let user = prompt ("What's your name ")
- let userId = 0;
- 
+let userId = 0;
 
 let account = [
   {
@@ -11,15 +9,65 @@ let account = [
   }
 ];
 
+function getUser() {
+  let user = prompt("What's your name ");
+  return user;
+}
+
+function selectOption(options) {
+  switch (options) {
+    case 1:
+      createAccount();
+      break;
+    case 2:
+      depositFunds();
+      break;
+    case 3:
+      withdrawFunds();
+      break;
+    case 4:
+      fundTransfer();
+      break;
+    case 5:
+      checkStatement();
+      break;
+    case 6:
+      fundHistory();
+      break;
+    default:
+      console.log('Enter correct option');
+  }
+}
+
+// option statement function
+function optionsStatement() {
+  console.log('1 Create Account');
+  console.log('2 Deposit Money');
+  console.log('3 Withdraw Money');
+  console.log('4 Transfer Money');
+  console.log('5 Check Statement');
+  console.log('6 Transaction History');
+}
+
+optionsStatement();
+
+let optionInput = prompt('Enter your option ');
+optionInput = parseInt(optionInput);
+
+if (!isNaN(optionInput) && optionInput >= 1 && optionInput <= 6) {
+  selectOption(optionInput);
+} else {
+  console.log('Enter correct option');
+}
+
 // Create account number function
 function accountNumbers() {
   return Math.floor(Math.random() * 1000000000);
 }
 
-
-//create pin function
+// create pin function
 function getPin() {
-  return Math.floor(Math.random() * 10000 );
+  return Math.floor(Math.random() * 10000);
 }
 
 // Create account function
@@ -36,57 +84,53 @@ function createAccount() {
   console.log(account);
 }
 
-//Get Profile
+// check statement
+function checkStatement() {
+  const user = getUser(); 
+  const profile = account.findIndex((userProfile) => userProfile.accountName === user);
 
-function getProfile() {
-  const profile = account.findIndex((userProfile) => userProfile.accountName === user)
-  
-  if(profile !== -1){
-    console.log('hello')
-  }else{
-    console.log('nahway')
+  if (profile !== -1) {
+    console.log('hello');
+  } else {
+    console.log('nahway');
   }
-  
-  
+}
+
+// deposit fund function
+function depositFunds() {
+  confirmUser();
+  console.log('deposit me');
+}
+
+function confirmUser() {
+  console.log(validateUser(userId));
+}
+
+// validate user function
+function validateUser(userId) {
+  const user = getUser(); 
+  let userExists = false;
+
+  for (let i = 0; i < account.length; i++) {
+    if (user === account[i].accountName) {
+      userExists = true;
+    }
+  }
+
+  return userExists ? 'welcome ' + user : 'Contact Admin';
+}
+
+// withdraw funds function
+
+function withdrawFunds(){
+  console.log('hello withdraw me')
 }
 
 
-
-
-
-
-
- 
-// validate user function  
-function validateUser(userId)  {
-    
-    userExists = false;
-  
-    for (userId; userId < account.length; userId++) {
-    
-      if (user === account[userId].accountName) {
-        userExists = true;
-      }
-    
-    }
-    
-    return userExists ? 'welcome ' + user : 'Contact Admin';
-  }
-
-function addFunds() {
-  
+function fundTransfer() {
+  console.log('hello transfer me')
 }
 
-createAccount()
-
-    
-    function confirmUser() {
-      console.log(validateUser(userId))
-    }
-    
-    confirmUser()
-    
-    getProfile()
-//function depositFunds() {
- // prompt('Enter account name')
-//}
+function fundHistory() {
+  console.log('hllo check my history')
+}
