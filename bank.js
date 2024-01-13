@@ -1,3 +1,7 @@
+let user = prompt ("What's your name ")
+ let userId = 0;
+ 
+
 let account = [
   {
     accountName: null,
@@ -9,11 +13,13 @@ let account = [
 
 // Create account number function
 function accountNumbers() {
-  return Math.floor(Math.random() * 100000);
+  return Math.floor(Math.random() * 1000000000);
 }
 
-function getPin () {
-  
+
+//create pin function
+function getPin() {
+  return Math.floor(Math.random() * 10000 );
 }
 
 // Create account function
@@ -25,19 +31,34 @@ function createAccount() {
     console.log('Account created successfully');
     account[0].accountName = accountId;
     account[0].accountNumber = accountNumbers();
+    account[0].pin = getPin();
   }
   console.log(account);
 }
 
+//Get Profile
+
+function getProfile() {
+  const profile = account.findIndex((userProfile) => userProfile.accountName === user)
+  
+  if(profile !== -1){
+    console.log('hello')
+  }else{
+    console.log('nahway')
+  }
+  
+  
+}
 
 
-let user = prompt ("What's your name ")
 
 
 
- let userId = 0;
-   
-  function validateUser(userId)  {
+
+
+ 
+// validate user function  
+function validateUser(userId)  {
     
     userExists = false;
   
@@ -59,11 +80,13 @@ function addFunds() {
 createAccount()
 
     
-    function introduceUser() {
+    function confirmUser() {
       console.log(validateUser(userId))
     }
     
-    introduceUser()
+    confirmUser()
+    
+    getProfile()
 //function depositFunds() {
  // prompt('Enter account name')
 //}
