@@ -1,21 +1,39 @@
+const fs = require('fs');
+const readlineSync = require('readline-sync');
+
 let userId = 0;
+
 
 let account = [
   {
     accountName: null,
     accountNumber: null,
     pin: null,
-    Funds: null
+    funds: null
   }
 ];
 
+function loadUserData() {
+  try {
+    const data = fs.readFileSync('userData.json', 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveUserData() {
+  const dataToSave = JSON.stringify(account);
+  fs.writeFileSync('userData.json', dataToSave);
+}
+
 function getUser() {
-  let user = prompt("What's your name ");
+  let user = readlineSync.question("What's your name? ");
   return user;
 }
 
-function selectOption(options) {
-  switch (options) {
+function selectOption(option) {
+  switch (option) {
     case 1:
       createAccount();
       break;
@@ -51,7 +69,7 @@ function optionsStatement() {
 
 optionsStatement();
 
-let optionInput = prompt('Enter your option ');
+let optionInput = readlineSync.question('Enter your option: ');
 optionInput = parseInt(optionInput);
 
 if (!isNaN(optionInput) && optionInput >= 1 && optionInput <= 6) {
@@ -70,9 +88,15 @@ function getPin() {
   return Math.floor(Math.random() * 10000);
 }
 
+// Load user data from file
+account = loadUserData();
+
+// Save user data to file
+saveUserData();
+
 // Create account function
 function createAccount() {
-  let accountId = prompt('Enter account name');
+  let accountId = readlineSync.question('Enter account name: ');
   if (accountId === "") {
     console.log('Provide a unique name');
   } else {
@@ -81,10 +105,13 @@ function createAccount() {
     account[0].accountNumber = accountNumbers();
     account[0].pin = getPin();
   }
-  console.log('Your account name is ' + account[0].accountName + '\n your account number is ' + account[0].accountNumber + '\n your pin is ' + account[0].pin 
-  )
-  console.log(account);
+  console.log('Your account name is ' + account[0].accountName + '\nYour account number is ' + account[0].accountNumber + '\nYour pin is ' + account[0].pin);
+
+  // Save user data after creating an account
+  saveUserData();
 }
+
+
 
 // check statement
 function checkStatement() {
