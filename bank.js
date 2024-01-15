@@ -81,6 +81,8 @@ function createAccount() {
     account[0].accountNumber = accountNumbers();
     account[0].pin = getPin();
   }
+  console.log('Your account name is ' + account[0].accountName + '\n your account number is ' + account[0].accountNumber + '\n your pin is ' + account[0].pin 
+  )
   console.log(account);
 }
 
