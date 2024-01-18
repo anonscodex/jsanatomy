@@ -152,6 +152,7 @@ function validateUser(userId) {
 // withdraw funds function
 
 function withdrawFunds(){
+  validateuser()
   console.log('hello withdraw me')
 }
 
