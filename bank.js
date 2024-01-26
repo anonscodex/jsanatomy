@@ -162,5 +162,5 @@ function fundTransfer() {
 }
 
 function fundHistory() {
-  console.log('hllo check my history')
+  console.log('hello check my history')
 }
